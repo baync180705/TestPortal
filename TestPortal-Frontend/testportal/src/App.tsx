@@ -8,6 +8,7 @@ import TestPage from './Components/TestPage.tsx';
 import Submit from './Components/Submit.tsx';
 import NewUser from './Components/NewUser.tsx';
 import Login from './Components/Login.tsx';
+import CreateExam from './Components/CreateExam.tsx';
 
 function App(){
 
@@ -35,8 +36,11 @@ const router = createBrowserRouter([
   {
     path: '/login',
     element: <Login/>
+  },
+  {
+    path: '/teacher/create-new-test',
+    element: <CreateExam/>
   }
-
 
 ])
   

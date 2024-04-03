@@ -1,12 +1,14 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+
 
 function TeacherWelcome() {
   return (
     <>
-      <div id = "greet-teacher">
+      <div id="greet-teacher">
         Welcome Back Teacher
       </div>
-      <button>Click Here to Create Test!</button>
+      <Link to="/teacher/create-new-test"><button>Click Here to Create Test!</button></Link>
     </>
   )
 }
