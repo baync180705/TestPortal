@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'TestPortal_App'
+    'TestPortal_App',
+    "corsheaders"
 ]
 
 MIDDLEWARE = [
@@ -52,7 +53,15 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "corsheaders.middleware.CorsMiddleware"
 ]
+
+#REST_FRAMEWORK={"DEFAULT_PERISSION_CLASSES":["rest_framework.permission.AllowAny"]}
+CORS_ALLOWED_ORIGIN=[
+    "http://localhost:3000",
+    "http://127.0.0.1:3000"
+]
+CORS_ORIGIN_ALLOW_ALL=False
 
 ROOT_URLCONF = 'TestPortal.urls'
 
