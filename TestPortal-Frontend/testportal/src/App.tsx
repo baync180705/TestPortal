@@ -1,14 +1,15 @@
 import React from 'react';
 import {createBrowserRouter, RouterProvider} from 'react-router-dom' //Recommended way of using react-router
 import './App.css';
-import TeacherWelcome from './Components/TeacherWelcome.tsx';
-import LeftMenu from "../src/Components/LeftMenu.tsx"; 
-import MainMenu from './Components/MainMenu.tsx'; 
-import TestPage from './Components/TestPage.tsx';
-import Submit from './Components/Submit.tsx';
-import NewUser from './Components/NewUser.tsx';
+import TeacherWelcome from './Components/teacher-end/TeacherWelcome.tsx';
+import LeftMenu from "./Components/student-end/LeftMenu.tsx"; 
+import MainMenu from './Components/student-end/MainMenu.tsx'; 
+import TestPage from './Components/student-end/TestPage.tsx';
+import Submit from './Components/student-end/Submit.tsx';
+import NewUser from './Components/student-end/NewUser.tsx';
 import Login from './Components/Login.tsx';
-import CreateExam from './Components/CreateExam.tsx';
+import CreateExam from './Components/teacher-end/CreateExam.tsx';
+import SetExamSpecs from './Components/teacher-end/SetExamSpecs.tsx';
 
 function App(){
 
@@ -38,7 +39,11 @@ const router = createBrowserRouter([
     element: <Login/>
   },
   {
-    path: '/teacher/create-new-test',
+    path: '/teacher/set-exam',
+    element: <SetExamSpecs/>
+  },
+  {
+    path: '/teacher/set-exam/create',
     element: <CreateExam/>
   }
 

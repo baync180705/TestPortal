@@ -34,7 +34,7 @@ function NewUser() {
         });
       };
     
-      const handleSubmit = (e: any) => {
+      const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
     
 

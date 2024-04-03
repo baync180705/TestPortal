@@ -1,7 +1,7 @@
 import React from 'react'
-import {ReactComponent as Dashboard} from '../dashboard.svg';
-import {ReactComponent as Course} from '../course.svg';
-import {ReactComponent as Settings} from '../settings.svg';
+import {ReactComponent as Dashboard} from '../../Assets/dashboard.svg';
+import {ReactComponent as Course} from '../../Assets/course.svg';
+import {ReactComponent as Settings} from '../../Assets/settings.svg';
 
 
 const LeftMenu = () => {
