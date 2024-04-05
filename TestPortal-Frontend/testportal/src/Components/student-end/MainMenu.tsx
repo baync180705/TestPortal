@@ -22,7 +22,7 @@ const MainMenu = () => {
     <div id = "main-menu">
       {PushTestCard("Physics", 20, "Bhaskar")}
       {PushTestCard("Physics", 20, "Bhaskar")}
-      {PushTestCard("Physics", 20, "Bhaskar")}
+      {PushTestCard("Physics", 20, "Bhasan nnnnnm r")}
       {PushTestCard("Physics", 20, "Bhaskar")}
       {PushTestCard("Physics", 20, "Bhaskar")}
       {PushTestCard("Physics", 20, "Bhaskar")}

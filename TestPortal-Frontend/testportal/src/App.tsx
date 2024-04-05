@@ -9,7 +9,8 @@ import Submit from './Components/student-end/Submit.tsx';
 import NewUser from './Components/student-end/NewUser.tsx';
 import Login from './Components/Login.tsx';
 import CreateExam from './Components/teacher-end/CreateExam.tsx';
-import SetExamSpecs from './Components/teacher-end/SetExamSpecs.tsx';
+import PublishTest from './Components/teacher-end/PublishTest.tsx';
+import SetSpecs from './Components/teacher-end/SetSpecs.tsx';
 
 function App(){
 
@@ -39,13 +40,19 @@ const router = createBrowserRouter([
     element: <Login/>
   },
   {
-    path: '/teacher/set-exam',
-    element: <SetExamSpecs/>
+    path: '/teacher/create',
+    element: <CreateExam/>
+
   },
   {
-    path: '/teacher/set-exam/create',
-    element: <CreateExam/>
+    path: '/teacher/publish',
+    element: <PublishTest/>
+  },
+  {
+    path: '/teacher/specs',
+    element: <SetSpecs/>
   }
+
 
 ])
   

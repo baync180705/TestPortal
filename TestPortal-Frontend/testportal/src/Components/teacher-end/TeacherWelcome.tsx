@@ -8,7 +8,7 @@ function TeacherWelcome() {
       <div id="greet-teacher">
         Welcome Back Teacher
       </div>
-      <Link to="/teacher/set-exam"><button>Click Here to Create Test!</button></Link>
+      <Link to="/teacher/specs"><button>Click Here to Create Test!</button></Link>
     </>
   )
 }
