@@ -57,7 +57,10 @@ MIDDLEWARE = [
 ]
 
 #REST_FRAMEWORK={"DEFAULT_PERISSION_CLASSES":["rest_framework.permission.AllowAny"]}
-CORS_ALLOWED_ORIGIN=[
+ALLOWED_HOSTS=[
+    "localhost","127.0.0.1"
+]
+CORS_ALLOWED_ORIGINS=[
     "http://localhost:3000",
     "http://127.0.0.1:3000"
 ]

@@ -39,12 +39,12 @@ function NewUser() {
     
 
         const combinedData = {
-          username : userData.username,
-          email: emailData.email,
-          password: passData.password,
+          "username" : userData.username,
+          "email": emailData.email,
+          "password": passData.password,
         }
 
-        axios.post('http://localhost:8000/signup/', combinedData)
+        axios.post('http://localhost:8000/testPortal/studentSignUp', combinedData)
           .then((response: { status: number; }) => {
             if (response.status === 201) {
               // Handle successful signup
