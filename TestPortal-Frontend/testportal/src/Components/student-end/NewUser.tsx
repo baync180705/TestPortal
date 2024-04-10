@@ -39,9 +39,9 @@ function NewUser() {
     
 
         const combinedData = {
-          "username" : userData.username,
-          "email": emailData.email,
-          "password": passData.password,
+          username : userData.username,
+          email: emailData.email,
+          password: passData.password,
         }
 
         axios.post('http://localhost:8000/testPortal/studentSignUp', combinedData)

@@ -1,15 +1,19 @@
-import React, {useState} from 'react'
+import React, { useState} from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios';
 
 
 function Login() {
-    const [userData, setUserData] = useState({
+     const [userData, setUserData] = useState({
         username: '',
       });
 
       const [passData, setPassData] = useState({
         password: '',
+      });
+
+      const [role, setRole] = useState({
+        asTeacher: 'false',
       });
     
       const userChange = (e:React.ChangeEvent<HTMLInputElement>) => {
@@ -24,6 +28,12 @@ function Login() {
           password: e.target.value 
         });
       }
+      const roleChange = (e:React.ChangeEvent<HTMLInputElement>)=>{
+        setRole({
+          ...role,
+          asTeacher: JSON.stringify((e.target.checked))
+        });
+      }
     
       const handleSubmit = async (e:React.FormEvent) => {
         e.preventDefault();
@@ -31,17 +41,17 @@ function Login() {
         const combinedData = {
           username: userData.username,
           password: passData.password,
+          asTeacher : role.asTeacher,
         }
+        console.log(combinedData);
+        console.log();
     
         try {
-          const response = await axios.post('http://localhost:8000/login/', combinedData);
+          const response = await axios.post('http://127.0.0.1:8000/testPortal/login', combinedData);
     
           if (response.status === 200) {
-            // Handle successful login
             console.log('Login successful!');
-            // Redirect or perform any actions for logged in users
           } else {
-            // Handle login failure
             console.error('Login failed!');
           }
         } catch (error) {
@@ -57,6 +67,7 @@ function Login() {
                 Username: <br />
                 <input type="text" placeholder="Enter your username" onChange={userChange} value = {userData.username}/><br /><br />
                 Password: <br /><input type="password" placeholder="Enter your password" onChange={passChange} value = {passData.password}/><br /><br />
+                I am a teacher <input type = "checkbox"  id = "check" onChange = {roleChange} value = {role.asTeacher}/>
                 <button>Submit</button>
             </div>
             <br />

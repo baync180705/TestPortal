@@ -13,19 +13,19 @@ function SetSpecs() {
     deadline: '',
   });
 
-  const handleNameChange = (e:any) => {
+  const handleNameChange = (e:React.ChangeEvent<HTMLInputElement>) => {
     setName(prevState => ({
       ...prevState,
       name: e.target.value
     }));
   };
-  const handleScheduleChange = (e:any) => {
+  const handleScheduleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
     setSchedule(prevState => ({
       ...prevState,
       scheduled: e.target.value
     }));
   };
-  const handleDeadlineChange = (e:any) => {
+  const handleDeadlineChange = (e:React.ChangeEvent<HTMLInputElement>) => {
     setDeadline(prevState => ({
       ...prevState,
       deadline: e.target.value

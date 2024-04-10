@@ -30,16 +30,16 @@ class login(APIView):
         asTeacher=request.data.get("asTeacher")
         user= authenticate(request,username=username,password=password)
         if (user is not None):
-                if ((asTeacher=="True") and(user.groups.filter(name="TeacherGroup").exists())):
+                if ((asTeacher=="true") and(user.groups.filter(name="TeacherGroup").exists())):
                    return Response("teacherlogin",status=status.HTTP_200_OK)
                  
-                elif ((asTeacher=="False") and(user.groups.filter(name="StudentGroup").exists())):
+                elif ((asTeacher=="false") and(user.groups.filter(name="StudentGroup").exists())):
                     return Response("studentlogin",status=status.HTTP_200_OK)
                 else:
                     return Response(status=status.HTTP_400_BAD_REQUEST)
 
         else:
-            return Response(status=status.HTTP_404_NOT_FOUND)
+            return Response(status=status.HTTP_400_BAD_REQUEST)
 
 class QuizPagination(PageNumberPagination):
     page_size=20
