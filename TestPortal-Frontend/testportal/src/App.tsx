@@ -11,29 +11,32 @@ import Login from './Components/Login.tsx';
 import CreateExam from './Components/teacher-end/CreateExam.tsx';
 import PublishTest from './Components/teacher-end/PublishTest.tsx';
 import SetSpecs from './Components/teacher-end/SetSpecs.tsx';
+import ProtectedRoutes from './Components/ProtectedRoutes.tsx';
+import Redirection from './Components/Redirection.tsx';
 
 function App(){
 
 const router = createBrowserRouter([
   {
-    path: '/test',
-    element: <TestPage/>,
+    path: '/student/test',
+    element: <ProtectedRoutes Cmp = {TestPage}/>,
   },
   {
-    path: '/',
-    element: <><LeftMenu/><MainMenu/></>,
+    path: '/student',
+    // element: <><LeftMenu/><MainMenu/></>,
+    element: <ProtectedRoutes Cmp = {MainMenu}/>,
   },
   {
-    path: '/test/submit',
-    element: <Submit/>
+    path: '/student/test/submit',
+    element: <ProtectedRoutes Cmp = {Submit}/>
   },
   {
     path: '/teacher',
-    element: <TeacherWelcome/>
+    element: <ProtectedRoutes Cmp = {TeacherWelcome}/>
   },
   {
-    path: '/signup',
-    element: <NewUser/>
+    path: '/student/signup',
+    element: <ProtectedRoutes Cmp = {NewUser}/>
   },
   {
     path: '/login',
@@ -41,19 +44,21 @@ const router = createBrowserRouter([
   },
   {
     path: '/teacher/create',
-    element: <CreateExam/>
+    element: <ProtectedRoutes Cmp = {CreateExam}/>
 
   },
   {
     path: '/teacher/publish',
-    element: <PublishTest/>
+    element: <ProtectedRoutes Cmp = {PublishTest}/>
   },
   {
     path: '/teacher/specs',
-    element: <SetSpecs/>
+    element: <ProtectedRoutes Cmp = {SetSpecs}/>
+  },
+  {
+    path: '/',
+    element: <Redirection/>
   }
-
-
 ])
   
 

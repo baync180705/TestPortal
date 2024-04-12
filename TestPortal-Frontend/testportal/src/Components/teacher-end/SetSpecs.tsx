@@ -35,9 +35,9 @@ function SetSpecs() {
 const handleSubmit = async (e:React.FormEvent) => {
     e.preventDefault();
     const userData = {
-        name: name.name,
-        scheduledAt: schedule.scheduled,
-        deadlineAt: deadline.deadline
+      quizName: name.name,
+      time_scheduled: schedule.scheduled,
+      time_ending: deadline.deadline,
     };
     
     try {

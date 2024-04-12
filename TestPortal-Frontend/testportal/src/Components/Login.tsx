@@ -1,9 +1,10 @@
-import React, { useState} from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState} from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios';
 
 
 function Login() {
+  const navigate = useNavigate();
      const [userData, setUserData] = useState({
         username: '',
       });
@@ -51,6 +52,17 @@ function Login() {
     
           if (response.status === 200) {
             console.log('Login successful!');
+            localStorage.setItem('login', 'true');
+            if (combinedData.asTeacher){
+              localStorage.setItem('role','teacher');
+              navigate('/teacher');
+            }
+            else{
+              localStorage.setItem('role','student')
+              navigate('/');
+            }
+            
+            
           } else {
             console.error('Login failed!');
           }
