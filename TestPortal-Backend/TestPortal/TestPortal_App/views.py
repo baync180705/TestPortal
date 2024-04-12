@@ -16,6 +16,29 @@ class question(APIView):
         serializer=QuestionSerializer(questions,many=True)
         return Response(serializer.data,status=status.HTTP_200_OK)
     
+    def post(self,request):
+        no_of=request.data.get("no_of")
+        data=request.data.get("questionSet")
+        quiz=request.data.get("quiz")
+        for i in range(no_of):
+            question=data[i]
+            data={
+                "question":question.question,
+                "option1":question.options[0],
+                "option2":question.options[1],
+                "option3":question.options[2],
+                "option4":question.options[3],
+                "correctOption":question.selectedOption,
+                "quiz":quiz
+
+            }
+            serializer=QuizSerializer(data=data)
+            if serializer.is_valid():
+               serializer.save()
+               return Response(serializer.data,status=status.HTTP_201_CREATED)
+            else:
+              return Response(serializer.errors,status.HTTP_400_BAD_REQUEST)
+    
 class createStudent(APIView):
     def post(self,request):
         user=User.objects.create_user(request.data.get("username"),request.data.get("email"),request.data.get("password"))
@@ -49,15 +72,12 @@ class QuizPagination(PageNumberPagination):
 
 class makeAQuiz(APIView,QuizPagination):
     def post(self,request):
-        no_of=request.data.get("no_of")
-        data=request.data.get("questionSet")
-        for i in range(no_of):
-            question=data[i]
+        
             data={
-            "quizName":question.quizName,
-            "author":question.author,
-            "time_scheduled":question.time_scheduled,
-            "time_ending":question.time_ending
+            "quizName":request.data.get("quizName"),
+            "author":request.data.get("author"),
+            "time_scheduled":request.data.get("time_scheduled"),
+            "time_ending":request.data.get("time_ending")
             }
             serializer=QuizSerializer(data=data)
             if serializer.is_valid():
