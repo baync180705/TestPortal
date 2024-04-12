@@ -49,18 +49,25 @@ class QuizPagination(PageNumberPagination):
 
 class makeAQuiz(APIView,QuizPagination):
     def post(self,request):
-        data={
-            "quizName":request.data.get("quizName"),
-            "author":request.data.get("author"),
-            "time_scheduled":request.data.get("time_scheduled"),
-            "time_ending":request.data.get("time_ending")
-        }
-        serializer=QuizSerializer(data=data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data,status=status.HTTP_201_CREATED)
-        else:
-            return Response(serializer.errors,status.HTTP_400_BAD_REQUEST)
+        no_of=request.data.get("no_of")
+        data=request.data.get("questionSet")
+        for i in range(no_of):
+            question=data[i]
+            data={
+            "quizName":question.quizName,
+            "author":question.author,
+            "time_scheduled":question.time_scheduled,
+            "time_ending":question.time_ending
+            }
+            serializer=QuizSerializer(data=data)
+            if serializer.is_valid():
+               serializer.save()
+               return Response(serializer.data,status=status.HTTP_201_CREATED)
+            else:
+              return Response(serializer.errors,status.HTTP_400_BAD_REQUEST)
+            
+        
+    
     
     def get(self,request):
         queryset=Quiz.objects.filter(time_ending__gte=timezone.now(),time_scheduled__lte=timezone.now())
