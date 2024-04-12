@@ -47,11 +47,17 @@ function CreateExam() {
     setQuestions(prevQuestions => prevQuestions.map(q => q.id === id ? { ...q, selectedOption } : q));
   };
 
+  let bhejeQuestions={
+    no_of:questions.length,
+    questionSet:questions,
+    quiz: localStorage.getItem('name'),
+  }
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
+    console.log(bhejeQuestions);
     try {
-      await axios.post('http://localhost:8000/questions', JSON.stringify(questions));
+      await axios.post('http://localhost:8000/quiz', bhejeQuestions);
       console.log('Questions posted successfully!');
       window.location.href = "localhost:3000/teacher/publish"
     } catch (error) {

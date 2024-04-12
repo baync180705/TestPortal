@@ -45,14 +45,15 @@ function Login() {
           asTeacher : role.asTeacher,
         }
         console.log(combinedData);
-        console.log();
-    
+        
         try {
           const response = await axios.post('http://127.0.0.1:8000/testPortal/login', combinedData);
     
           if (response.status === 200) {
             console.log('Login successful!');
             localStorage.setItem('login', 'true');
+            localStorage.setItem('username', userData.username);
+            
             if (combinedData.asTeacher){
               localStorage.setItem('role','teacher');
               navigate('/teacher');

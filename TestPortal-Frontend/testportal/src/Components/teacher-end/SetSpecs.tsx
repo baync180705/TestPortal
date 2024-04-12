@@ -38,10 +38,13 @@ const handleSubmit = async (e:React.FormEvent) => {
       quizName: name.name,
       time_scheduled: schedule.scheduled,
       time_ending: deadline.deadline,
+      author: localStorage.getItem('username'),
     };
+
+    localStorage.setItem('name',userData.quizName);
     
     try {
-        const response = await axios.post('http://localhost:8000/specs', userData);
+        const response = await axios.post('http://localhost:8000/quiz', userData);
         console.log(response.data);
         window.location.href = 'http://localhost:3000/teacher/create';
     } catch (error) {
